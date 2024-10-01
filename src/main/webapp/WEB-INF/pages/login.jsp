@@ -21,12 +21,12 @@
     <form:form method="POST" action="/hw4/login">
         <div class="mb-3">
             <form:label path="username" cssClass="form-label">使用者名稱</form:label>
-            <form:input path="username" cssClass="form-control"/>
+            <form:input path="username" cssClass="form-control" required="required" />
             <div id="groupHelp" class="form-text">輸入您的帳號</div>
         </div>
         <div class="mb-3">
             <form:label path="password" cssClass="form-label">密碼</form:label>
-            <form:password path="password" cssClass="form-control"/>
+            <form:password path="password" cssClass="form-control" required="required" />
             <div id="groupHelp" class="form-text">輸入您的密碼</div>
         </div>
         <input type="reset" class="btn btn-secondary" value="重置" />

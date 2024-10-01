@@ -23,7 +23,8 @@ public class LotteryController {
     }
 
     @PostMapping("/lotteryController.do")
-    public String generateLottery(@RequestParam("group") Optional<String> groupParam, @RequestParam("exclude") Optional<String> excludeNum, Model model) {
+    public String generateLottery(@RequestParam("group") Optional<String> groupParam,
+                                  @RequestParam("exclude") Optional<String> excludeNum, Model model) {
         LinkedList<String> errorMessages = new LinkedList<>();
         model.addAttribute("errorMessages", errorMessages);
         HashSet<Integer> excludeNumberSet = new HashSet<>();

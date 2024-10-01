@@ -28,6 +28,7 @@
 	<a href="<%=request.getContextPath()%>/lottery/main">
 		<button class="btn btn btn-secondary">再生成一次</button>
 	</a>
+
 	<a href="<%=request.getContextPath()%>">
 		<button class="btn btn-primary">回首頁</button>
 	</a>

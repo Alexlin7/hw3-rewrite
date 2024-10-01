@@ -4,7 +4,6 @@ import com.systex.hw4.model.Member;
 import com.systex.hw4.repository.MemberRepository;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,7 +20,6 @@ public class MemberController {
 
     private final MemberRepository memberRepo;
 
-    @Autowired
     public MemberController(MemberRepository memberRepo) {
         this.memberRepo = memberRepo;
     }
@@ -32,11 +30,12 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public ModelAndView loginAction(@Valid @ModelAttribute Member member, HttpSession session, Model model) {
+    public ModelAndView loginAction(@Valid @ModelAttribute Member member,
+                                    HttpSession session, Model model) {
 
-
-        Optional<Member> obj = this.memberRepo.findByUsernameAndPassword(member.getUsername(), member.getPassword());
-        if (!obj.isPresent()) {
+        Optional<Member> obj =
+                this.memberRepo.findByUsernameAndPassword(member.getUsername(), member.getPassword());
+        if (obj.isEmpty()) {
             LinkedList<String> errorMessages = new LinkedList<>();
             errorMessages.add("帳號或密碼錯誤");
             model.addAttribute("errorMessages", errorMessages);
@@ -53,14 +52,19 @@ public class MemberController {
     }
 
     @PostMapping("/createMember")
-    public ModelAndView createMember(@Valid @ModelAttribute Member member, Model model, BindingResult bindingResult) {
+    public ModelAndView createMember(@Valid @ModelAttribute Member member,
+                                     Model model, BindingResult bindingResult) {
+        LinkedList<String> errorMessages = new LinkedList<>();
         if (bindingResult.hasErrors()) {
             return new ModelAndView("sign", "command", new Member());
+        }
+        if (member.getUsername() == null || member.getPassword() == null) {
+            errorMessages.add("輸入的帳號或密碼為空");
         }
 
         Optional<Member> obj = this.memberRepo.findByUsername(member.getUsername());
         if (obj.isPresent()) {
-            LinkedList<String> errorMessages = new LinkedList<>();
+
             errorMessages.add("使用者名稱已存在");
             model.addAttribute("errorMessages", errorMessages);
             return new ModelAndView("sign", "command", new Member());

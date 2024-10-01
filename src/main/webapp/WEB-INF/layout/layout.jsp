@@ -23,7 +23,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/index.jsp">回首頁</a></li>
                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/lottery/main">樂透選號</a></li>
-                <c:if test="${ member != null}">
+                <c:if test="${ sessionScope.member != null}">
                     <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/logout">登出</a></li>
                 </c:if>
             </ul>
