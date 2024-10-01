@@ -1,0 +1,18 @@
+= SpringMVC,登入功能及 Postman/cURL 用途簡易說明
+
+== Spring MVC
+
+=== 登入功能
+* 預設使用者帳號密碼
+** 帳號：root
+** 密碼：1234
+
+<<<
+
+== Postman
+
+
+<<<
+== cURL
+
+<<<
