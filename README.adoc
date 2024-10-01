@@ -72,13 +72,3 @@ cURL 是一個開源專案，包含 `curl` 命令列工具和 `libcurl`（供 C 
 . **腳本整合**
 - 適合與其他命令列工具結合，編寫複雜的自動化腳本。
 
-=== 使用範例
-
-以下是使用 `curl` 進行登入請求的範例：
-
-[source,bash]
-----
-curl -X POST http://localhost:8080/<contextRoot>/login \
-   -H "Content-Type: application/json" \
-   -d '{"username":"root", "password":"1234"}'
-----
